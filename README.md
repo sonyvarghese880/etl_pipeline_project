@@ -1,7 +1,17 @@
 # ETL Pipeline Project
 
-This is a basic ETL (Extract-Transform-Load) pipeline built with Python. It reads data from a CSV file, transforms it, and loads it into a SQLite database.
+This project demonstrates an ETL (Extract, Transform, Load) pipeline using Python.
+
+## Features
+- Extracts data from a CSV
+- Transforms it using custom logic
+- Loads the cleaned data to a new file
+
+## Tech Stack
+- Python
+- Pytest
+- Bash
 
 ## How to Run
 ```bash
-python main.py
+bash run.sh
