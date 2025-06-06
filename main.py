@@ -1,9 +1,19 @@
-from extract import extract_data
-from transform import transform_data
-from load import load_data
+from etl.extract import extract_data
+from etl.transform import transform_data
+from etl.load import load_data
 
-if __name__ == '__main__':
-    raw_data = extract_data('data/input_data.csv')
-    cleaned_data = transform_data(raw_data)
-    load_data(cleaned_data, 'etl.db')
-    print("ETL process completed.")
+def main():
+    input_path = "data/yellow_tripdata_2025-01.parquet"
+    output_path = "data/cleaned_data.csv"
+
+    # Step 1: Read file
+    df = extract_data(input_path)
+
+    # Step 2: Clean the data
+    df_clean = transform_data(df)
+
+    # Step 3: Save to CSV
+    load_data(df_clean, output_path)
+
+if __name__ == "__main__":
+    main()
