@@ -3,8 +3,11 @@ from etl.transform import transform_data
 from etl.load import load_data
 
 def main():
-    input_path = "data/yellow_tripdata_2025-01.parquet"
-    output_path = "data/cleaned_data.csv"
+    input_path = "s3://yellow-taxi-nyc-data/raw/yellow_tripdata_2025-01.parquet"
+    #output_path = "data/cleaned_data.csv"
+    output_path = "s3://yellow-taxi-nyc-data/processed/yellow_tripdata_2025-01-cleaned.parquet"
+
+    
 
     # Step 1: Read file
     df = extract_data(input_path)

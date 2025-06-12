@@ -1,6 +1,5 @@
 Starting ETL Pipeline...
 Running main.py...
-Reading data from data/yellow_tripdata_2025-01.parquet ...
 ETL pipeline completed successfully.
 Running tests with pytest...
 ============================= test session starts =============================
@@ -10,6 +9,6 @@ collected 1 item
 
 tests\test_transform.py .                                                [100%]
 
-============================== 1 passed in 0.73s ==============================
+============================== 1 passed in 0.77s ==============================
 All tests passed successfully.
 ETL Pipeline and Tests Completed.
