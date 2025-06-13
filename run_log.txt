@@ -1,14 +1,16 @@
 Starting ETL Pipeline...
 Running main.py...
+Data saved to: s3://yellow-taxi-nyc-data/processed/yellow_tripdata_2025-01-cleaned.parquet
 ETL pipeline completed successfully.
 Running tests with pytest...
 ============================= test session starts =============================
 platform win32 -- Python 3.10.5, pytest-8.3.5, pluggy-1.6.0
 rootdir: C:\Users\sonyv\OneDrive\Desktop\AWS_Project\etl_pipeline_project
-collected 1 item
+collected 2 items
 
+tests\test_load.py .                                                     [ 50%]
 tests\test_transform.py .                                                [100%]
 
-============================== 1 passed in 0.77s ==============================
+============================== 2 passed in 1.18s ==============================
 All tests passed successfully.
 ETL Pipeline and Tests Completed.

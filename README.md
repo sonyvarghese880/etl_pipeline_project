@@ -1,7 +1,7 @@
 ETL Pipeline Project
 --------------------
 
-This is a simple yet scalable Python ETL pipeline that processes NYC Yellow Taxi trip data stored in Parquet format. It includes data cleaning, transformation, and loading to a CSV, with automated testing using pytest.
+This is a simple yet scalable Python ETL pipeline that processes NYC Yellow Taxi trip data stored in Parquet format. It includes data cleaning, transformation, loads the cleaned data to Amazon S3 in Parquet format, and with automated testing using pytest.
 
 Folder Structure
 ----------------
@@ -22,17 +22,17 @@ etl_pipeline_project/
 
 How to Run
 --------------
-1. Install dependencies
+ Ensure you have Python 3.8+ and `pyarrow` installed:
+bash
+pip install -r requirements.txt
 
-    pip install -r requirements.txt
+2. Place your raw Parquet file in S3 (e.g., `s3://yellow-taxi-nyc-data/raw/yellow_tripdata_2025-01.parquet`).
 
-2. Give permission to run the shell script (first time only)
+3. Modify main.py to reference your S3 or local path.
 
-    chmod +x run.sh
-
-3. Run the pipeline + tests
-
-    ./run.sh
+4. Run the pipeline:
+bash
+python main.py
 
 This:
 - Runs the ETL pipeline via main.py
@@ -41,21 +41,24 @@ This:
 
 ETL Breakdown
 -----------------
-- **Extract:** Loads a `.parquet` file into a DataFrame using `pyarrow`
-- **Transform:** Filters out bad records, adds new columns (e.g., trip distance in km)
-- **Load:** Exports cleaned data to CSV: `data/cleaned_data.csv`
+- Extracts raw Parquet data
+- Transforms: filters rows, converts miles to kilometers
+- Loads cleaned data to S3 as `.parquet`
 
 Testing
 -----------
 Tests for the transformation logic are written using `pytest`.
 
 
-Output
-----------
-You’ll get a cleaned CSV file in:
+S3 Output Example
+------------------
+s3://yellow-taxi-nyc-data/cleaned/cleaned_data.parquet
 
-    data/cleaned_data.csv
 
 And a log file with all pipeline/test results in:
 
-    run_log.txt
+  run_log.txt
+
+Note:
+Make sure AWS credentials are configured properly to allow S3 read/write operations.
+
